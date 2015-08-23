@@ -1,0 +1,33 @@
+{
+  "name": "awsome",
+  "version": "0.0.1",
+  "description": "awsome - The aw(e)some way of doing AWS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dancali/carmel.git"
+  },
+  "author": "Dan Calinescu",
+  "bugs": {
+    "url": "https://github.com/dancali/awsome/issues"
+  },
+  "homepage": "https://github.com/dancali/awsome",
+  "dependencies": {
+    "aws-sdk": "^2.1.46",
+    "colors": "^1.1.2",
+    "fs-extra": "^0.23.1",
+    "path": "^0.11.14",
+    "walk": "^2.3.9"
+  },
+  "keywords": [
+    "aws",
+    "devops",
+    "deploy",
+    "s3",
+    "route53"
+  ],
+  "license": "MIT"
+}
