@@ -1,6 +1,6 @@
 {
   "name": "awsome",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "awsome - The aw(e)some way of doing AWS",
   "main": "index.js",
   "scripts": {

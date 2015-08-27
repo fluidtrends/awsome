@@ -1,5 +1,6 @@
-var path     = require('path');
-var AWS      = require('aws-sdk');
+var path       = require('path');
+var AWS        = require('aws-sdk');
+var coreutils  = require('coreutils');
 
 var dns = {
 
@@ -83,7 +84,7 @@ var dns = {
       HostedZoneId: path.basename(zone.Id)
     };
 
-    logger.info("Adding domain record for " + domain);
+    coreutils.logger.info("Adding domain record for " + domain);
     route53.changeResourceRecordSets(params, function(err, data) {
       if (err) {
           error(err);
@@ -100,7 +101,7 @@ var dns = {
   },
 
   addDomain: function (domain, success, error) {
-    logger.info("Adding domain " + domain);
+    coreutils.logger.info("Adding domain " + domain);
     var uuid = utils.uuid();
 
     var params = {
