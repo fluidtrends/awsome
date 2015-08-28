@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', './' ]
+2 info using npm@2.1.18
+3 info using node@v0.10.35
+4 verbose node symlink /usr/local/bin/node
+5 verbose publish [ './' ]
+6 silly cache add args [ './', null ]
+7 verbose cache add spec ./
+8 silly cache add parsed spec { raw: './',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: './',
+8 silly cache add   spec: '/Users/dancali/@/dev/src/awsome',
+8 silly cache add   type: 'directory' }
+9 verbose addLocalDirectory /Users/dancali/.npm/awsome/0.0.4/package.tgz not in flight; packing
+10 verbose tar pack [ '/Users/dancali/.npm/awsome/0.0.4/package.tgz',
+10 verbose tar pack   '/Users/dancali/@/dev/src/awsome' ]
+11 verbose tarball /Users/dancali/.npm/awsome/0.0.4/package.tgz
+12 verbose folder /Users/dancali/@/dev/src/awsome
+13 info prepublish awsome@0.0.4
+14 verbose addLocalTarball adding from inside cache /Users/dancali/.npm/awsome/0.0.4/package.tgz
+15 silly cache afterAdd awsome@0.0.4
+16 verbose afterAdd /Users/dancali/.npm/awsome/0.0.4/package/package.json not in flight; writing
+17 verbose afterAdd /Users/dancali/.npm/awsome/0.0.4/package/package.json written
+18 silly publish { name: 'awsome',
+18 silly publish   version: '0.0.4',
+18 silly publish   description: 'awsome makes complex devops tasks as easy as humanly possible',
+18 silly publish   main: 'index.js',
+18 silly publish   scripts: { test: 'mocha' },
+18 silly publish   repository: { type: 'git', url: 'git://github.com/dancali/awsome.git' },
+18 silly publish   author: { name: 'Dan Calinescu' },
+18 silly publish   bugs: { url: 'https://github.com/dancali/awsome/issues' },
+18 silly publish   homepage: 'https://github.com/dancali/awsome',
+18 silly publish   dependencies:
+18 silly publish    { 'aws-sdk': '^2.1.46',
+18 silly publish      bluebird: '^2.9.34',
+18 silly publish      colors: '^1.1.2',
+18 silly publish      'fs-extra': '^0.23.1',
+18 silly publish      inquirer: '^0.9.0',
+18 silly publish      'mock-stdin': '^0.3.0',
+18 silly publish      path: '^0.11.14',
+18 silly publish      'readline-sync': '^1.2.20',
+18 silly publish      walk: '^2.3.9' },
+18 silly publish   keywords: [ 'aws', 'devops', 'deploy', 's3', 'route53' ],
+18 silly publish   license: 'MIT',
+18 silly publish   devDependencies: { chai: '^3.2.0', mocha: '^2.2.5', sinon: '^1.16.1' },
+18 silly publish   gitHead: '17ca83f3716410e58aa19b4c992fba5fa1070a29',
+18 silly publish   readme: '## Overview\n\n**awsome** makes complex devops tasks as easy as humanly possible\n\n## Installation\n\n```\n$ npm install awsome\n```\n\n\n## Usage\n\n```js\nvar awsome = require(\'awsome\');\n\nawsome.website.deploy(\'./wwwroot\', \'mydomain.com\');\n```\n\n## Configuration\n\n**awsome** stores its configuration data such as AWS credentials in **$HOME/.awsome/**.\nWhen you start off, you need to have your AWS Key and Secret handy so you can pass them in at the prompt.\n**awsome** will ask you to enter your AWS credentials once and then you can forget about them.\n\n## Services\n\nTo host static websites, **awsome** makes use of AWS S3 and Route53 services. If you\'re hosting a subdomain, you will only\nuse up one bucket (for example api.mydomain.com) whereas if you\'re hosting an APEX domain (for example mydomain.com) then\n**awsome** will create two buckets, one for **www.mydomain.com** and another for **mydomain.com**. But not to worry, you will\nonly use up one bucket to store contents, the second one will simply redirect to the first one.\n\n## Smart uploading\n\nWhen uploading files, **awsome** is smart enough to keep your local assets and your remote assets perfectly synced. In addition\nto that, assets that have not changed will be skipped and will not be re-uploaded.\n\n## License\n\nMIT © [Dan Calinescu](http://dancali.io)\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   _id: 'awsome@0.0.4',
+18 silly publish   _shasum: '3cc4d2573f61f917fbde117bbd59a24d4b167bd3',
+18 silly publish   _from: '.' }
+19 silly mapToRegistry name awsome
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/awsome
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/dancali/.npm/awsome/0.0.4/package.tgz
+25 verbose request uri https://registry.npmjs.org/awsome
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 02:18:28
+28 verbose request using bearer token for auth
+29 verbose request id fa67406614c21ec3
+30 http request PUT https://registry.npmjs.org/awsome
+31 http 403 https://registry.npmjs.org/awsome
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '128',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Fri, 28 Aug 2015 23:18:05 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-lcy1127-LCY',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1440803883.885550,VS0,VE2008' }
+33 verbose request invalidating /Users/dancali/.npm/registry.npmjs.org/awsome on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 0.0.4. Try bumping the version to 1.0.0" : awsome
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:244:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:373:22)
+35 verbose stack     at Request.emit (events.js:98:17)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1318:14)
+35 verbose stack     at Request.emit (events.js:117:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1266:12)
+35 verbose stack     at IncomingMessage.emit (events.js:117:20)
+35 verbose stack     at _stream_readable.js:944:16
+35 verbose stack     at process._tickCallback (node.js:442:13)
+36 verbose statusCode 403
+37 verbose pkgid awsome
+38 verbose cwd /Users/dancali/@/dev/src/awsome
+39 error Darwin 14.0.0
+40 error argv "node" "/usr/local/bin/npm" "publish" "./"
+41 error node v0.10.35
+42 error npm  v2.1.18
+43 error code E403
+44 error "You cannot publish over the previously published version 0.0.4. Try bumping the version to 1.0.0" : awsome
+45 error If you need help, you may report this error at:
+45 error     <http://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
