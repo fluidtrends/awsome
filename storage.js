@@ -181,24 +181,24 @@ var storage = {
         markedAssets.forEach(function(asset){
           if (asset.action === 'remove') {
             storage.removeAsset(domain, asset, function(){
-               logger.ok("[REMOVE] " + asset.key);
+               logger.ok("[removed] " + asset.key);
                if (total-- <= 1) success();
              }, function(err) {
-               logger.fail("[REMOVE] " + asset.key);
+               logger.fail("[not removed] " + asset.key);
                if (total-- <= 1) success();
              });
           }
           else if (asset.action === 'upload') {
             storage.uploadAsset(domain, asset, function(){
-               logger.ok("[UPLOAD] " + asset.key);
+               logger.ok("[uploded] " + asset.key);
                if (total-- <= 1) success();
              }, function(err) {
-               logger.fail("[UPLOAD] " + asset.key);
+               logger.fail("[not uploded] " + asset.key);
                if (total-- <= 1) success();
              });
           }
           else if (asset.action === 'skip') {
-            logger.skip("[UPLOAD] " + asset.key);
+            logger.skip("[skipped] " + asset.key);
             if (total-- <= 1) success();
           }
         });
