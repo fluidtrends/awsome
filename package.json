@@ -1,10 +1,10 @@
 {
   "name": "awsome",
-  "version": "0.0.2",
-  "description": "awsome - The aw(e)some way of doing AWS",
+  "version": "0.0.3",
+  "description": "awsome makes complex devops tasks as easy as humanly possible",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,13 @@
   "homepage": "https://github.com/dancali/awsome",
   "dependencies": {
     "aws-sdk": "^2.1.46",
+    "bluebird": "^2.9.34",
     "colors": "^1.1.2",
     "fs-extra": "^0.23.1",
+    "inquirer": "^0.9.0",
+    "mock-stdin": "^0.3.0",
     "path": "^0.11.14",
+    "readline-sync": "^1.2.20",
     "walk": "^2.3.9"
   },
   "keywords": [
@@ -29,5 +33,10 @@
     "s3",
     "route53"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.16.1"
+  }
 }
