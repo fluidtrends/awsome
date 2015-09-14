@@ -6,10 +6,11 @@ var awsome  = require('..');
 
 describe('Configuration', function () {
   var config      = awsome.config;
-  sinon.stub(config, "homeDir").returns('./tmp/homedir/');
   var stdin       = require('mock-stdin').stdin();
+  var stub;
 
   beforeEach(function(done) {
+    stub = sinon.stub(config, "homeDir").returns('./tmp/homedir/');
     if (fs.existsSync('./tmp')) {
       // Start off clean
       fs.removeSync('./tmp');
@@ -18,6 +19,7 @@ describe('Configuration', function () {
   });
 
   afterEach(function(done) {
+    stub.restore();
     if (fs.existsSync('./tmp')) {
       // Clean up
       fs.removeSync('./tmp');

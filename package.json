@@ -1,6 +1,6 @@
 {
   "name": "awsome",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "awsome makes complex devops tasks as easy as humanly possible",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,8 @@
     "mock-stdin": "^0.3.0",
     "path": "^0.11.14",
     "readline-sync": "^1.2.20",
+    "scp2": "^0.2.2",
+    "ssh2": "^0.4.11",
     "walk": "^2.3.9"
   },
   "keywords": [
