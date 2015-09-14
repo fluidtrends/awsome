@@ -1,6 +1,6 @@
 {
   "name": "awsome",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "awsome makes complex devops tasks as easy as humanly possible",
   "main": "index.js",
   "scripts": {

@@ -13,8 +13,30 @@ $ npm install awsome
 
 ```js
 var awsome = require('awsome');
+```
 
+## API
+
+### Static Site Deployment
+
+```js
 awsome.website.deploy('./wwwroot', 'mydomain.com');
+```
+
+### Server Creation
+
+```js
+server.create('myserver', function(err, server) {
+  // Enjoy your new server
+});
+```
+
+### Server Provisioning
+
+```js
+server.provision('myserver', function(err) {
+  // Your server is now provisioned
+});
 ```
 
 ## Configuration

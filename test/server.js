@@ -32,9 +32,9 @@ describe('Server', function () {
     }
 
     server.createKeyPair('admin', function(err, keyName) {
-    expect(err).to.not.exist;
-      done();
-    });
+      expect(err).to.not.exist;
+        done();
+      });
   });
 
   it('can sync servers', function (done) {
@@ -43,9 +43,9 @@ describe('Server', function () {
     }
 
     server.sync(function(err, servers) {
-    expect(err).to.not.exist;
-      done();
-    });
+      expect(err).to.not.exist;
+        done();
+      });
   });
 
   it('can create a new server', function (done) {
