@@ -1,42 +1,27 @@
 {
   "name": "awsome",
-  "version": "0.0.6",
-  "description": "awsome makes complex devops tasks as easy as humanly possible",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "AWS Object Management Environment",
   "scripts": {
-    "test": "mocha"
+    "savor": "savor",
+    "test": "savor test",
+    "coverage": "savor coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dancali/awsome.git"
+    "url": "https://github.com/idancali/awsome.git"
   },
-  "author": "Dan Calinescu",
-  "bugs": {
-    "url": "https://github.com/dancali/awsome/issues"
-  },
-  "homepage": "https://github.com/dancali/awsome",
-  "dependencies": {
-    "aws-sdk": "^2.1.46",
-    "bluebird": "^2.9.34",
-    "colors": "^1.1.2",
-    "fs-extra": "^0.23.1",
-    "inquirer": "^0.9.0",
-    "mock-stdin": "^0.3.0",
-    "path": "^0.11.14",
-    "readline-sync": "^1.2.20",
-    "walk": "^2.3.9"
-  },
-  "keywords": [
-    "aws",
-    "devops",
-    "deploy",
-    "s3",
-    "route53"
-  ],
+  "author": "Dan Calinescu <idancalinescu@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idancali/awsome/issues"
+  },
+  "homepage": "https://github.com/idancali/awsome",
+  "dependencies": {
+    "aws-sdk": "^2.177.0",
+    "fs-extra": "^5.0.0"
+  },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5",
-    "sinon": "^1.16.1"
+    "savor": "0.x"
   }
 }

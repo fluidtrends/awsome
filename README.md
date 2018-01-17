@@ -1,40 +1,28 @@
-## Overview
+<p align="center">
+<img src="https://raw.githubusercontent.com/idancali/awsome/master/logo.png" width="256px">
+</p>
 
-**awsome** makes complex devops tasks as easy as humanly possible
+<h1 align="center"> AWSOME </h1>
+<h3 align="center"> AWS Object Management Environment </h3>
+<p align="center"> Manage your AWS environments as if they were plain objects.
+</p>
+<hr/>
 
-## Installation
+## Latest Release [![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
+[![Module](https://img.shields.io/npm/v/awsome.svg)](https://www.npmjs.com/package/awsome)
+[![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
+[![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+
+## Basic Usage
 
 ```
-$ npm install awsome
+// Import AWSOME with default options
+const awsome = require('awsome')
+
 ```
 
+## Dependencies
 
-## Usage
+AWSOME makes use of the following libraries:
 
-```js
-var awsome = require('awsome');
-
-awsome.website.deploy('./wwwroot', 'mydomain.com');
-```
-
-## Configuration
-
-**awsome** stores its configuration data such as AWS credentials in **$HOME/.awsome/**.
-When you start off, you need to have your AWS Key and Secret handy so you can pass them in at the prompt.
-**awsome** will ask you to enter your AWS credentials once and then you can forget about them.
-
-## Services
-
-To host static websites, **awsome** makes use of AWS S3 and Route53 services. If you're hosting a subdomain, you will only
-use up one bucket (for example api.mydomain.com) whereas if you're hosting an APEX domain (for example mydomain.com) then
-**awsome** will create two buckets, one for **www.mydomain.com** and another for **mydomain.com**. But not to worry, you will
-only use up one bucket to store contents, the second one will simply redirect to the first one.
-
-## Smart uploading
-
-When uploading files, **awsome** is smart enough to keep your local assets and your remote assets perfectly synced. In addition
-to that, assets that have not changed will be skipped and will not be re-uploaded.
-
-## License
-
-MIT © [Dan Calinescu](http://dancali.io)
+* [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
