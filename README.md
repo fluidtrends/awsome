@@ -4,7 +4,7 @@
 
 <h1 align="center"> AWSOME </h1>
 <h3 align="center"> AWS Object Management Environment </h3>
-<p align="center"> Manage your AWS environments as if they were plain objects.
+<p align="center"> Manage your AWS infrastructure as if it were composed of plain objects.
 </p>
 <hr/>
 
