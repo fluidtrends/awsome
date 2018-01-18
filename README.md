@@ -47,7 +47,6 @@ AWSOME makes use of the following libraries:
 
 ## License
 
-AWSOME is licensed under the MIT li
+AWSOME is licensed under the MIT License
 
-* [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
-* [savor](https://github.com/fluidtrends/savor) - for testing
+* [Read The License](LICENSE)
