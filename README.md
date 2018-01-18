@@ -47,6 +47,12 @@ AWSOME makes use of the following libraries:
 
 ## License
 
-AWSOME is licensed under the MIT License
+AWSOME is licensed under the MIT License.
 
 * [Read The License](LICENSE)
+
+## Sponsors
+
+AWSOME is sponsored by [Fluid Trends](http://fluidtrends.com).
+
+If you'd like to co-sponsor this project, shoot us email at **team at fluidtrends.com**
