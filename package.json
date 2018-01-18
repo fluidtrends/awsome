@@ -1,23 +1,36 @@
 {
   "name": "awsome",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "AWS Object Management Environment",
   "scripts": {
-    "savor": "savor",
     "test": "savor test",
     "coverage": "savor coverage",
     "examples": "node ./examples"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/idancali/awsome.git"
+    "url": "https://github.com/fluidtrends/awsome.git"
   },
-  "author": "Dan Calinescu <idancalinescu@gmail.com>",
+  "keywords": [
+    "aws",
+    "s3",
+    "route53",
+    "route53Domains",
+    "static",
+    "website",
+    "hosting",
+    "bucket",
+    "domain"
+  ],
+  "engines": {
+    "node": ">=6.10"
+  },
+  "author": "I. Dan Calinescu <idancalinescu@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/idancali/awsome/issues"
+    "url": "https://github.com/fluidtrends/awsome/issues"
   },
-  "homepage": "https://github.com/idancali/awsome",
+  "homepage": "https://github.com/fluidtrends/awsome",
   "dependencies": {
     "aws-sdk": "^2.177.0",
     "fs-extra": "^5.0.0"
