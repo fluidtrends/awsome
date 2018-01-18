@@ -17,8 +17,8 @@ const bucket = new Bucket({ name: 'my-test-bucket' })
 
 // Fetch the bucket data
 bucket.retrieve()
-      .then((data) => {
-        // Good stuff, enjoy the data
+      .then((bucket) => {
+        // Good stuff, enjoy the bucket.data
       })
       .catch((error) => {
         // Something happened and the bucket data could not be retrieved
