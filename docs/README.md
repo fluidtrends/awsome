@@ -27,4 +27,4 @@ bucket.retrieve()
 
 Read The Full Bucket Documentation for more details about creating, retrieving, updating and deleting buckets, including site buckets.
 
-[Read The Bucket Documentation](bucket)
+[Read The Bucket Documentation](/docs/bucket)
