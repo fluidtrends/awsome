@@ -32,19 +32,76 @@ const bucket = new Bucket({
 
 [See all the available options](#options)
 
-### Create A New Bucket
+### Functions
+
+**```exists()```**
+*Returns a Promise*
+
+Checks whether the bucket exists or not.
+
+*Example:*
 
 ```
-bucket.create().then((bucket) => {
-  // Find the data under bucket.data
-})
+bucket.exists()
+      .then(() => {
+        // The bucket exists
+      })
+      .catch(() => {
+        // The bucket does not exist
+      })
 ```
 
-### Retrieve An Existing Bucket
+**```create()```**
+*Returns a Promise*
 
-### Update An Existing Bucket
+Creates a brand new bucket, unless it already exists.
 
-### Delete An Existing Bucket
+*Example:*
+
+```
+bucket.create()
+      .then((bucket) => {
+        // The bucket now exists
+      })
+      .catch((error) => {
+        // The bucket was not created
+      })
+```
+
+**```retrieve()```**
+*Returns a Promise*
+
+Retrieves the bucket data, if the bucket exists.
+
+*Example:*
+
+```
+bucket.retrieve()
+      .then((bucket) => {
+        // The bucket.data is now available
+      })
+      .catch((error) => {
+        // The bucket data could not be retrieved
+      })
+```
+
+
+**```delete()```**
+*Returns a Promise*
+
+Deletes the entire bucket, if it exists.
+
+*Example:*
+
+```
+bucket.delete()
+      .then(() => {
+        // The bucket is now deleted
+      })
+      .catch((error) => {
+        // The bucket data could not be deleted
+      })
+```
 
 ### Fields
 
