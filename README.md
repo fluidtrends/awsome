@@ -36,11 +36,18 @@ bucket.retrieve()
 
 Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets.
 
-[Read The Docs](docs)
+[Read The Docs](/docs)
 
 ## Dependencies
 
 AWSOME makes use of the following libraries:
 
 * [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
-* [savor](https://github.com/fluidtreds/savor) - for testing
+* [savor](https://github.com/fluidtrends/savor) - for testing
+
+## License
+
+AWSOME is licensed under the MIT li
+
+* [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
+* [savor](https://github.com/fluidtrends/savor) - for testing
