@@ -16,12 +16,25 @@
 ## Basic Usage
 
 ```
-// Import AWSOME with default options
+// Import AWSOME
 const awsome = require('awsome')
+
+// Create a new bucket instance
+const bucket = new Bucket({ name: 'my-test-bucket' })
+
+// Fetch the bucket data
+bucket.retrieve()
+      .then((data) => {
+        // Good stuff, enjoy the data
+      })
+      .catch((error) => {
+        // Something happened and the bucket data could not be retrieved
+      })
 ```
 
-
 ## Documentation
+
+Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets.
 
 [Read The Docs](docs)
 
@@ -30,3 +43,4 @@ const awsome = require('awsome')
 AWSOME makes use of the following libraries:
 
 * [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
+* [savor](https://github.com/fluidtreds/savor) - for testing
