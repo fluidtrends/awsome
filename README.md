@@ -13,7 +13,7 @@
 [![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
 [![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-## Basic Usage
+## Getting Started
 
 ```
 // Import AWSOME
