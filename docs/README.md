@@ -6,4 +6,4 @@ AWSOME allows you to manage your AWS infrastructure programmatically, as if were
 
 The Bucket object allows you manage your S3 buckets, including site buckets.
 
-[Read The Bucket Documentation](docs/bucket)
+[Read The Bucket Documentation](bucket)
