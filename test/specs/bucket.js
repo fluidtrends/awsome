@@ -24,7 +24,6 @@ savor.add('fail without an AWS access key', (context, done) => {
     _unstub(aws._s3, calls.concat(['headBucket']))
     // Mock the access key
     process.env.AWS_ACCESS_KEY_ID = 'test'
-    // process.env.AWS_SECRET_ACCESS_KEY = 'test'
   })
 })
 
