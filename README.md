@@ -15,6 +15,8 @@
 
 ## Getting Started
 
+Make your AWS credentials available in the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables and then just import AWSOME to get started.
+
 ```
 // Import AWSOME
 const awsome = require('awsome')
@@ -49,6 +51,7 @@ We'd be glad to have you join us as an AWSOME Contributor. Get started by readin
 AWSOME makes use of the following libraries:
 
 * [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
+* [cross-env](https://github.com/kentcdodds/cross-env) - for running examples
 * [savor](https://github.com/fluidtrends/savor) - for testing
 
 ## License

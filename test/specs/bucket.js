@@ -14,7 +14,34 @@ function _unstub (service, calls) {
   calls.map(call => service[call].restore())
 }
 
-savor.add('create a new regular bucket', (context, done) => {
+savor.add('fail without an AWS access key', (context, done) => {
+  const calls = ['createBucket']
+  _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
+  _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
+
+  savor.promiseShouldFail(new Bucket({ name: 'test-bucket' }).create(), done, (error) => {
+    context.expect(error).to.exist
+    _unstub(aws._s3, calls.concat(['headBucket']))
+    // Mock the access key
+    process.env.AWS_ACCESS_KEY_ID = 'test'
+    // process.env.AWS_SECRET_ACCESS_KEY = 'test'
+  })
+})
+
+.add('fail without an AWS secret key', (context, done) => {
+  const calls = ['createBucket']
+  _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
+  _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
+
+  savor.promiseShouldFail(new Bucket({ name: 'test-bucket' }).create(), done, (error) => {
+    context.expect(error).to.exist
+    _unstub(aws._s3, calls.concat(['headBucket']))
+    // Mock the secret key
+    process.env.AWS_SECRET_ACCESS_KEY = 'test'
+  })
+})
+
+.add('create a new regular bucket', (context, done) => {
   const calls = ['createBucket']
   _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
   _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
