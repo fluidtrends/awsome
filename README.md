@@ -38,6 +38,12 @@ Read the full documentation for detailed instructions on how to create, retrieve
 
 [Read The Docs](/docs)
 
+## Contributing
+
+We'd be glad to have you join us as an AWSOME Contributor. Get started by reading our Contributor Guide.
+
+[Read The Contributor Guide](/contrib)
+
 ## Dependencies
 
 AWSOME makes use of the following libraries:
