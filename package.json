@@ -5,7 +5,8 @@
   "scripts": {
     "savor": "savor",
     "test": "savor test",
-    "coverage": "savor coverage"
+    "coverage": "savor coverage",
+    "examples": "node ./examples"
   },
   "repository": {
     "type": "git",

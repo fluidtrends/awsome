@@ -1,5 +1,3 @@
-const path = require('path')
-const fs = require('fs-extra')
 const savor = require('savor')
 const site = savor.src('site')
 const aws = savor.src('../lib/aws')
