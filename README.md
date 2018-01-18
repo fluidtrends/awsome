@@ -59,6 +59,6 @@ AWSOME is licensed under the MIT License.
 
 ## Sponsors
 
-AWSOME is sponsored by [Fluid Trends](http://fluidtrends.com).
+AWSOME is sponsored by [Fluid Trends](http://fluidtrends.com) and is part of the Fluid Trends Open Source Lab.
 
 If you'd like to co-sponsor this project, shoot us email at **team at fluidtrends.com**
