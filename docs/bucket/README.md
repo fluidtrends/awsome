@@ -9,19 +9,22 @@ To use the Bucket you start by instantiating an instance, with some options.
 *Examples:*
 
 ```
+// Import AWSOME
+const awsome = require('awsome')
+
 // Instantiate a regular bucket
-const bucket = new Bucket({
+const bucket = new awsome.Bucket({
   name: 'my-test-bucket'
 })
 
 // Instantiate a site bucket
-const bucket = new Bucket({
+const bucket = new awsome.Bucket({
   name: 'www.mydomain.com',
   site: true
 })
 
 // Instantiate a redirected site bucket
-const bucket = new Bucket({
+const bucket = new awsome.Bucket({
   name: 'www.mydomain.com',
   site: {
     redirectTo: 'mydomain.com'

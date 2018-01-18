@@ -1,3 +1,3 @@
 module.exports = {
-  site: require('./src/site')
+  Bucket: require('./src/Bucket')
 }

@@ -20,7 +20,7 @@
 const awsome = require('awsome')
 
 // Create a new bucket instance
-const bucket = new Bucket({ name: 'my-test-bucket' })
+const bucket = new awsome.Bucket({ name: 'my-test-bucket' })
 
 // Fetch the bucket data
 bucket.retrieve()
