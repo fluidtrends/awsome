@@ -13,12 +13,12 @@
 
 ## Next Release (0.3) [![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
 
-[![Commits](https://img.shields.io/github/commits-since/fluidtrends/awsome/0.2.0.svg)]()
+[![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/maintainability)](https://codeclimate.com/github/idancali/awsome/maintainability)
+[![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Issues](https://img.shields.io/github/issues-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
 [![Issues](https://img.shields.io/github/issues-closed-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
-[![Maintainability](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/maintainability)](https://codeclimate.com/github/idancali/awsome/maintainability)
-[![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
-[![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+[![Commits](https://img.shields.io/github/commits-since/fluidtrends/awsome/0.2.0.svg)]()
 
 ## Getting Started
 
