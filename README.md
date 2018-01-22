@@ -39,6 +39,22 @@ bucket.retrieve()
       })
 ```
 
+## Examples
+
+Get started with the examples provided to **create**, **retrieve** or **delete** buckets. Make sure you have your AWS key and secret ready and then just run the example as follows:
+
+```
+npm run examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=delete
+```
+
+The supported examples are:
+
+* ```create```
+* ```retrieve```
+* ```delete```
+
+[See All The Examples](/examples)
+
 ## Documentation
 
 Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets.
