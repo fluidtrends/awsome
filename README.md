@@ -11,9 +11,9 @@
 </p>
 <hr/>
 
-## Upcoming Release (0.3)
+## Upcoming Release (0.3) [![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
 
-[![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome) [![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
+[![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/maintainability)](https://codeclimate.com/github/idancali/awsome/maintainability)
 [![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Issues](https://img.shields.io/github/issues-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
