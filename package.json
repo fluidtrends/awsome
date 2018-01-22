@@ -4,8 +4,10 @@
   "description": "AWS Object Management Environment",
   "scripts": {
     "test": "savor test",
-    "coverage": "savor coverage",
-    "examples": "node ./examples --"
+    "coverage": "savor coverage"
+  },
+  "bin": {
+    "awsome-examples": "node ./examples --"
   },
   "repository": {
     "type": "git",
