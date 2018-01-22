@@ -44,7 +44,7 @@ class Bucket {
                     return this
                   }
                   return this._createSite()
-                })
+                }).then(() => this._createPolicy())
               })
   }
 
@@ -96,23 +96,55 @@ class Bucket {
     })
   }
 
+  get publicPolicy () {
+    return {
+      Version: '2008-10-17',
+      Statement: [
+        {
+          Sid: 'Allow Public Access to All Objects',
+          Effect: 'Allow',
+          Principal: {
+            'AWS': '*'
+          },
+          Action: 's3:GetObject',
+          Resource: `arn:aws:s3:::${this.name}/*`
+        }
+      ]
+    }
+  }
+
   _createSite () {
-    return aws.s3('putBucketWebsite', Object.assign({}, {
-      Bucket: this.name,
-      ContentMD5: '',
-      WebsiteConfiguration: {
-        ErrorDocument: {
-          Key: 'index.html'
-        },
-        IndexDocument: {
-          Suffix: 'index.html'
+    var WebsiteConfiguration = {
+      ErrorDocument: {
+        Key: 'index.html'
+      },
+      IndexDocument: {
+        Suffix: 'index.html'
+      }
+    }
+
+    if (this.site.redirectTo) {
+      WebsiteConfiguration = {
+        RedirectAllRequestsTo: {
+          HostName: this.site.redirectTo
         }
       }
-    }, this.site.redirectTo && {
-      RedirectAllRequestsTo: {
-        HostName: this.site.redirectTo
-      }
-    })).then(() => this._retrieveSite())
+    }
+
+    return aws.s3('putBucketWebsite', {
+      Bucket: this.name,
+      ContentMD5: '',
+      WebsiteConfiguration
+    }).then(() => this._retrieveSite())
+  }
+
+  _createPolicy () {
+    return aws.s3('putBucketPolicy', {
+      Bucket: this.name,
+      Policy: JSON.stringify(this.publicPolicy)
+    }).then(() => {
+      return this
+    })
   }
 
   _retrieveSite () {

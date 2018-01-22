@@ -18,15 +18,17 @@ if (!args.bucket) {
   process.exit(0)
 }
 
+if (!args.op) {
+  console.error('Your AWS operation is missing')
+  process.exit(0)
+}
+
 process.env.AWS_ACCESS_KEY_ID = args.key
 process.env.AWS_SECRET_ACCESS_KEY = args.secret
 
-const bucket = new awsome.Bucket({ name: args.bucket })
+// const bucket = new awsome.Bucket({ name: args.bucket, site: true })
+const bucket = new awsome.Bucket({ name: args.bucket, site: { redirectTo: 'www.fluidtrends.com' } })
 
-console.log(`Fetching data for bucket ${args.bucket} ...`)
-
-bucket.retrieve()
-      .then((bucket) => {
-        console.log(`Found ${bucket.data.Contents.length} objects in your ${args.bucket} bucket.`)
-      })
+bucket[args.op]()
+      .then((result) => console.log(result))
       .catch((error) => console.error(error))

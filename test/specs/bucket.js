@@ -41,7 +41,7 @@ savor.add('fail without an AWS access key', (context, done) => {
 })
 
 .add('create a new regular bucket', (context, done) => {
-  const calls = ['createBucket']
+  const calls = ['createBucket', 'putBucketPolicy']
   _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
   _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
 
@@ -52,7 +52,7 @@ savor.add('fail without an AWS access key', (context, done) => {
 })
 
 .add('create a new site bucket', (context, done) => {
-  const calls = ['putBucketWebsite', 'createBucket', 'getBucketWebsite']
+  const calls = ['putBucketWebsite', 'putBucketPolicy', 'createBucket', 'getBucketWebsite']
   _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
   _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
 
@@ -63,7 +63,7 @@ savor.add('fail without an AWS access key', (context, done) => {
 })
 
 .add('create a new redirected site bucket', (context, done) => {
-  const calls = ['putBucketWebsite', 'createBucket', 'getBucketWebsite']
+  const calls = ['putBucketWebsite', 'putBucketPolicy', 'createBucket', 'getBucketWebsite']
   _stubWithError(context, aws._s3, ['headBucket'], new Error('bucket does not exist'))
   _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
 
