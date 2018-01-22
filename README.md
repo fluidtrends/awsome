@@ -85,4 +85,4 @@ AWSome is licensed under the MIT License.
 
 AWSome is sponsored by [Fluid Trends](http://fluidtrends.com) and is part of the Fluid Trends Open Source Lab.
 
-If you'd like to co-sponsor this project, shoot us email at **team at fluidtrends.com**
+If you'd like to co-sponsor this project, please email your co-sponsorship request to **team at fluidtrends.com**
