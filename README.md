@@ -2,14 +2,23 @@
 <img src="https://raw.githubusercontent.com/idancali/awsome/master/logo.png" width="256px">
 </p>
 
-<h1 align="center"> AWSOME </h1>
+<h1 align="center"> AWSome
+[![Module](https://img.shields.io/npm/v/awsome.svg)](https://www.npmjs.com/package/awsome)
+ </h1>
+
 <h3 align="center"> AWS Object Management Environment </h3>
 <p align="center"> Manage your AWS infrastructure as if it were composed of plain objects.
 </p>
 <hr/>
 
-## Latest Release [![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
-[![Module](https://img.shields.io/npm/v/awsome.svg)](https://www.npmjs.com/package/awsome)
+## Next Release (0.3)
+[![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
+
+[![Commits](https://img.shields.io/github/commits-since/fluidtrends/awsome/0.2.0.svg)]()
+[![Issues](https://img.shields.io/github/issues-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
+[![Issues](https://img.shields.io/github/issues-closed-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/maintainability)](https://codeclimate.com/github/idancali/awsome/maintainability)
 [![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
 [![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
