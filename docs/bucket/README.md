@@ -57,7 +57,7 @@ bucket.exists()
 **```create()```**
 *Returns a Promise*
 
-Creates a brand new bucket, unless it already exists.
+Creates a brand new bucket, unless it already exists. Currently, the bucket gets assigned a Public Policy.
 
 *Example:*
 
