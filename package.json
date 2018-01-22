@@ -1,13 +1,10 @@
 {
   "name": "awsome",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "AWS Object Management Environment",
   "scripts": {
     "test": "savor test",
     "coverage": "savor coverage"
-  },
-  "bin": {
-    "awsome-examples": "./examples --"
   },
   "repository": {
     "type": "git",

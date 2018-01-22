@@ -11,5 +11,5 @@ Have a look at the list of examples available:
 To run an example, simply run the ```awsome/examples``` script like so:
 
 ```
-node ./node_modules/.bin/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=delete
+node ./node_modules/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=delete
 ```
