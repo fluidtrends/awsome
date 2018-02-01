@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/idancali/awsome/master/logo.png" width="256px">
+<img src="https://raw.githubusercontent.com/fluidtrends/awsome/master/logo.png" width="256px">
 </p>
 
 <h1 align="center"> AWSome
@@ -11,10 +11,9 @@
 </p>
 <hr/>
 
-## Upcoming Release (0.3)
-[![Build](https://circleci.com/gh/idancali/awsome.svg?style=svg)](https://circleci.com/gh/idancali/awsome)
-[![Coverage](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/test_coverage)](https://codeclimate.com/github/idancali/awsome/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/312e1b5f300ce41ce86f/maintainability)](https://codeclimate.com/github/idancali/awsome/maintainability)
+## Upcoming Release (0.3) [![Build](https://circleci.com/gh/fluidtrends/awsome.svg?style=svg)](https://circleci.com/gh/fluidtrends/awsome)
+
+[![Coverage](https://api.codeclimate.com/v1/badges/bcf4dae241b12298574c/test_coverage)](https://codeclimate.com/github/fluidtrends/awsome/test_coverage)[![Maintainability](https://api.codeclimate.com/v1/badges/bcf4dae241b12298574c/maintainability)](https://codeclimate.com/github/fluidtrends/awsome/maintainability)
 [![Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Issues](https://img.shields.io/github/issues-raw/fluidtrends/awsome.svg)](https://github.com/fluidtrends/awsome/projects/1)
 
