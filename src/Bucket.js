@@ -1,4 +1,8 @@
 const aws = require('../lib/aws')
+const crypto = require('crypto')
+const fs = require('fs-extra')
+const walk = require('walk')
+const path = require('path')
 
 class Bucket {
 
@@ -16,6 +20,10 @@ class Bucket {
 
   get site () {
     return this.options.site
+  }
+
+  get dir () {
+    return (this.options.dir ? path.resolve(this.options.dir) : '')
   }
 
   get data () {
@@ -57,6 +65,12 @@ class Bucket {
                 }
                 return this
               })
+  }
+
+  update () {
+    return this.exists()
+              .then(() => this._update())
+              .then(() => this.retrieve())
   }
 
   delete (options) {
@@ -158,6 +172,132 @@ class Bucket {
     return aws.s3('deleteBucketWebsite', { Bucket: this.name }).then(() => {
       this._siteInfo = null
       return this
+    })
+  }
+
+  _update () {
+    if (!this.dir || !fs.existsSync(this.dir)) {
+      return Promise.reject(new Error('Missing expected local directory'))
+    }
+
+    return this.retrieve()
+               .then((bucket) => this._localAssets())
+               .then((assets) => this._makeUpdatePatch(this.data.Contents, assets))
+               .then((patch) => this._applyUpdatePatch(patch))
+  }
+
+  _localAssets () {
+    return new Promise((resolve, reject) => {
+      var assets = []
+      var walker = walk.walk(this.dir, { followLinks: false })
+      const _hash = (text) => crypto.createHash('md5').update(text).digest('base64')
+      const _contentType = (filename) => {
+        var lowercase = filename.toLowerCase()
+
+        if (lowercase.indexOf('.html') >= 0) return 'text/html'
+        else if (lowercase.indexOf('.css') >= 0) return 'text/css'
+        else if (lowercase.indexOf('.json') >= 0) return 'application/json'
+        else if (lowercase.indexOf('.js') >= 0) return 'application/x-javascript'
+        else if (lowercase.indexOf('.png') >= 0) return 'image/png'
+        else if (lowercase.indexOf('.jpg') >= 0) return 'image/jpg'
+
+        return 'application/octet-stream'
+      }
+
+      walker.on('file', (root, stat, next) => {
+        const filepath = root + '/' + stat.name
+        const key = filepath.substring(this.dir.length + 1)
+        const content = fs.readFileSync(filepath)
+        const contentType = _contentType(filepath)
+        const hash = _hash(content)
+        const etag = Buffer.from(hash, 'base64').toString('hex')
+        assets.push({ key, contentType, filepath, hash, etag })
+        next()
+      })
+
+      walker.on('end', function () {
+        resolve(assets)
+      })
+    })
+  }
+
+  _makeUpdatePatch (remoteAssets, localAssets) {
+    return new Promise((resolve, reject) => {
+      if (!remoteAssets || remoteAssets.length <= 0) {
+        resolve(localAssets.map(localAsset => {
+          localAsset.action = 'upload'
+          return localAsset
+        }))
+        return
+      }
+
+      var patch = []
+
+      remoteAssets.forEach((remoteAsset) => {
+        remoteAsset.ETag = remoteAsset.ETag.replace(/"/g, '')
+        var removed = true
+        localAssets.forEach((localAsset) => {
+          if (remoteAsset.Key === localAsset.key) {
+            removed = false
+            // Update assets if they were changed
+            localAsset.action = ((remoteAsset.ETag === localAsset.etag) ? 'skip' : 'upload')
+            patch.push(localAsset)
+          }
+        })
+
+        if (removed) {
+          // Remove old assets
+          patch.push({etag: remoteAsset.ETag, action: 'remove', key: remoteAsset.Key})
+        }
+      })
+
+      localAssets.forEach((localAsset) => {
+        var fresh = true
+        remoteAssets.forEach((remoteAsset) => {
+          if (remoteAsset.Key === localAsset.key) {
+            // We always want to upload new assets
+            fresh = false
+          }
+        })
+
+        if (fresh) {
+          localAsset.action = 'upload'
+          patch.push(localAsset)
+        }
+      })
+
+      resolve(patch)
+    })
+  }
+
+  _applyUpdatePatch (patch) {
+    return Promise.all(patch.map(asset => this._updateAsset(asset)))
+  }
+
+  _updateAsset (asset) {
+    switch (asset.action) {
+      case 'upload':
+        return this._uploadAsset(asset)
+      case 'remove':
+        return this._removeAsset(asset)
+    }
+  }
+
+  _uploadAsset (asset) {
+    const content = fs.readFileSync(asset.filepath)
+    return aws.s3('putObject', {
+      Bucket: this.name,
+      Key: asset.key,
+      Body: content,
+      ContentType: asset.contentType,
+      ContentMD5: asset.hash
+    })
+  }
+
+  _removeAsset (asset) {
+    return aws.s3('deleteObject', {
+      Bucket: this.name,
+      Key: asset.key
     })
   }
 }

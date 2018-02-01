@@ -1,6 +1,8 @@
 const savor = require('savor')
 const Bucket = savor.src('Bucket')
 const aws = savor.src('../lib/aws')
+const fs = require('fs-extra')
+const path = require('path')
 
 function _stubWithSuccess (context, service, calls, data) {
   calls.map(call => context.stub(service, call, (options, callback) => callback(null, data)))
@@ -156,6 +158,78 @@ savor.add('fail without an AWS access key', (context, done) => {
   _stubWithError(context, aws._s3, calls, new Error('test'))
   savor.promiseShouldFail(new Bucket({ name: 'test-bucket', site: true }).retrieve(), done, (error) => {
     context.expect(error).to.exist
+    _unstub(aws._s3, calls)
+  })
+})
+
+.add('fail to update a bucket without a local directory location', (context, done) => {
+  const calls = ['headBucket']
+  _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
+  savor.promiseShouldFail(new Bucket({ name: 'test-bucket', site: true }).update(), done, (error) => {
+    context.expect(error).to.exist
+    _unstub(aws._s3, calls)
+  })
+})
+
+.add('fail to update a bucket with a missing local directory location', (context, done) => {
+  const calls = ['headBucket']
+  _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
+  savor.promiseShouldFail(new Bucket({ name: 'test-bucket', site: true, dir: 'dummy'}).update(), done, (error) => {
+    context.expect(error).to.exist
+    _unstub(aws._s3, calls)
+  })
+})
+
+.add('update a bucket for the first time', (context, done) => {
+  const bucketName = 'test-bucket'
+
+  savor.addAsset('assets/local', 'www', context)
+  const www = path.join(context.dir, 'www')
+  context.expect(fs.existsSync(www)).to.be.true
+
+  const calls = ['getBucketWebsite', 'putObject', 'headBucket', 'listObjectsV2']
+  _stubWithSuccess(context, aws._s3, calls, { test: 'test' })
+
+  savor.promiseShouldSucceed(new Bucket({ name: bucketName, site: true, dir: 'www' }).update(), done, (bucket) => {
+    context.expect(bucket.name).to.equal(bucketName)
+    _unstub(aws._s3, calls)
+  })
+})
+
+.add('update a bucket without any remote assets', (context, done) => {
+  savor.addAsset('assets/local', 'www', context)
+  const calls = ['getBucketWebsite', 'putObject', 'headBucket', 'listObjectsV2']
+  _stubWithSuccess(context, aws._s3, calls, { Contents: [] })
+
+  savor.promiseShouldSucceed(new Bucket({ name: 'test-bucket', site: true, dir: 'www' }).update(), done, (bucket) => {
+    context.expect(bucket.name).to.equal('test-bucket')
+    _unstub(aws._s3, calls)
+  })
+})
+
+.add('update a bucket without some remote assets', (context, done) => {
+  savor.addAsset('assets/local', 'www', context)
+  const calls = ['getBucketWebsite', 'putObject', 'deleteObject', 'headBucket', 'listObjectsV2']
+  _stubWithSuccess(context, aws._s3, calls, { Contents: [
+    { Key: 'images/image.png',
+      LastModified: '2018-01-23T14:08:36.000Z',
+      ETag: 'b718c2d5e7e8cb3eb529b03402abebad',
+      Size: 1559808,
+      StorageClass: 'STANDARD' },
+    { Key: 'test.js',
+      LastModified: '2018-01-23T14:08:36.000Z',
+      ETag: 'd41d8cd98f00b204e9800998ecf8427e',
+      Size: 10,
+      StorageClass: 'STANDARD' },
+    { Key: 'text.json',
+      LastModified: '2018-01-23T14:08:36.000Z',
+      ETag: '8a80554c91d9fca8acb82f023de02f12',
+      Size: 3,
+      StorageClass: 'STANDARD' }
+  ]})
+
+  savor.promiseShouldSucceed(new Bucket({ name: 'test-bucket', site: true, dir: 'www' }).update(), done, (bucket) => {
+    context.expect(bucket.name).to.equal('test-bucket')
     _unstub(aws._s3, calls)
   })
 })
