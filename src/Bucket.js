@@ -2,7 +2,6 @@ const operations = require('./bucketOps')
 const path = require('path')
 
 class Bucket {
-
   constructor (options) {
     this._options = Object.assign({}, options)
     this._ops = operations(this)

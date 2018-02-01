@@ -2,7 +2,6 @@ const fs = require('fs-extra')
 const walk = require('walk')
 const aws = require('../lib/aws')
 const utils = require('./utils')
-const path = require('path')
 
 function _exists (bucket) {
   return aws.s3('headBucket', { Bucket: bucket.name }).then(() => {
