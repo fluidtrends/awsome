@@ -88,6 +88,22 @@ bucket.retrieve()
       })
 ```
 
+**```update()```**
+*Returns a Promise*
+
+Updates the bucket data, if the bucket exists, with local assets, based on the ```dir``` option.
+
+*Example:*
+
+```
+bucket.update()
+      .then((bucket) => {
+        // The new bucket.data is now available
+      })
+      .catch((error) => {
+        // The bucket data could not be updated
+      })
+```
 
 **```delete()```**
 *Returns a Promise*
@@ -120,6 +136,10 @@ The bucket data that was previously retrieved using the ***retrieve()*** functio
 
 The options that were initially passed in when this bucket was instantiated.
 
+**```dir```**
+
+The location directory to be used when updating the remote data.
+
 **```site```**
 
 The site options that were initially passed in when this bucket was instantiated.
@@ -151,3 +171,14 @@ This option holds site-related options. If this option is not present, the bucke
 - ```false``` makes this a regular bucket
 - ```true``` for a simple site bucket
 - ```{ redirectTo: 'another bucket' }``` a redirected site bucket
+
+
+**```dir```**
+*type: String*
+
+Specifies the local directory where local assets are to be uploaded to the remote bucket. This location is used to update the remote data using the ```update()``` function.
+
+*Examples:*
+
+- ```www``` a directory in the current working directory
+- ```/home/users/www/data``` an absolute path can also be used
