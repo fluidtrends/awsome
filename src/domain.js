@@ -1,17 +1,55 @@
-const aws = require('../lib/aws')
+const operations = require('./domainOps')
 
-const _domain = (options) => ({
-  name: options.name,
-  options,
-  checkAvailability: () => _checkAvailability(options)
-})
+class Domain {
+  constructor (options) {
+    this._options = Object.assign({}, options)
+    this._ops = operations(this)
+  }
 
-function _checkAvailability (options) {
-  return _route53Domains('checkDomainAvailability', options, { DomainName: options.name })
+  get ops () {
+    return this._ops
+  }
+
+  get options () {
+    return this._options
+  }
+
+  get ref () {
+    return this._ref
+  }
+
+  get name () {
+    return this.options.name
+  }
+
+  get id () {
+    return this._id
+  }
+
+  get zone () {
+    return this._zone
+  }
+
+  isHosted () {
+    return this.ops.isHosted()
+  }
+
+  host () {
+    return this.isHosted()
+               .then((domain) => { throw new Error('awsome-domain-ishosted') })
+               .catch((error) => {
+                 if (error.message === 'awsome-domain-ishosted') {
+                   throw new Error('Domain is already hosted')
+                 }
+                 return this.ops.host().then(() => this)
+               })
+  }
+
+  unhost () {
+    return this.isHosted()
+               .then((domain) => this.ops.unhost())
+               .then((domain) => this)
+  }
 }
 
-function _route53Domains (call, options, raw) {
-  return aws.route53Domains(call, raw).then(() => _domain(options))
-}
-
-module.exports = _domain
+module.exports = Domain

@@ -1,5 +1,10 @@
 const crypto = require('crypto')
 const path = require('path')
+const uuid = require('uuid/v4')
+
+function newId (domain) {
+  return uuid()
+}
 
 function contentType (filename) {
   const index = {
@@ -26,7 +31,8 @@ function hash (text) {
 
 var utils = {
   contentType,
-  hash
+  hash,
+  newId
 }
 
 module.exports = utils
