@@ -1,16 +1,23 @@
 const crypto = require('crypto')
+const path = require('path')
 
 function contentType (filename) {
-  var lowercase = filename.toLowerCase()
+  const index = {
+    html: 'text/html',
+    css: 'text/css',
+    json: 'application/json',
+    js: 'application/x-javascript',
+    png: 'image/png',
+    jpg: 'image/jpg',
+    gif: 'image/gif'
+  }
 
-  if (lowercase.indexOf('.html') >= 0) return 'text/html'
-  if (lowercase.indexOf('.css') >= 0) return 'text/css'
-  if (lowercase.indexOf('.json') >= 0) return 'application/json'
-  if (lowercase.indexOf('.js') >= 0) return 'application/x-javascript'
-  if (lowercase.indexOf('.png') >= 0) return 'image/png'
-  if (lowercase.indexOf('.jpg') >= 0) return 'image/jpg'
+  var ext = path.extname(filename)
+  if (!ext) {
+    return 'application/octet-stream'
+  }
 
-  return 'application/octet-stream'
+  return index[ext.substring(1)] || 'application/octet-stream'
 }
 
 function hash (text) {
