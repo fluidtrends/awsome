@@ -74,6 +74,8 @@ AWSome makes use of the following libraries:
 
 * [aws sdk](https://github.com/aws/aws-sdk-js) - for AWS calls
 * [cross-env](https://github.com/kentcdodds/cross-env) - for running examples
+* [fs-extra](https://github.com/jprichardson/node-fs-extra) - for file management
+* [walk](https://github.com/Daplie/node-walk) - for file tree walking
 * [savor](https://github.com/fluidtrends/savor) - for testing
 
 ## License
