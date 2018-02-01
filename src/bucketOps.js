@@ -111,9 +111,34 @@ function _localAssets (bucket) {
   })
 }
 
+function _addUpdatePatchChanges (remoteAssets, localAssets) {
+  var patch = []
+
+  remoteAssets.forEach((remoteAsset) => {
+    remoteAsset.ETag = remoteAsset.ETag.replace(/"/g, '')
+    var removed = true
+    localAssets.forEach((localAsset) => {
+      if (remoteAsset.Key === localAsset.key) {
+        removed = false
+          // Update assets if they were changed
+        localAsset.action = ((remoteAsset.ETag === localAsset.etag) ? 'skip' : 'upload')
+        patch.push(localAsset)
+      }
+    })
+
+    if (removed) {
+        // Remove old assets
+      patch.push({etag: remoteAsset.ETag, action: 'remove', key: remoteAsset.Key})
+    }
+  })
+
+  return patch
+}
+
 function _makeUpdatePatch (bucket, remoteAssets, localAssets) {
   return new Promise((resolve, reject) => {
     if (!remoteAssets || remoteAssets.length <= 0) {
+      // Make a pure local patch
       resolve(localAssets.map(localAsset => {
         localAsset.action = 'upload'
         return localAsset
@@ -121,26 +146,7 @@ function _makeUpdatePatch (bucket, remoteAssets, localAssets) {
       return
     }
 
-    var patch = []
-
-    remoteAssets.forEach((remoteAsset) => {
-      remoteAsset.ETag = remoteAsset.ETag.replace(/"/g, '')
-      var removed = true
-      localAssets.forEach((localAsset) => {
-        if (remoteAsset.Key === localAsset.key) {
-          removed = false
-            // Update assets if they were changed
-          localAsset.action = ((remoteAsset.ETag === localAsset.etag) ? 'skip' : 'upload')
-          patch.push(localAsset)
-        }
-      })
-
-      if (removed) {
-          // Remove old assets
-        patch.push({etag: remoteAsset.ETag, action: 'remove', key: remoteAsset.Key})
-      }
-    })
-
+    var patch = _addUpdatePatchChanges(remoteAssets, localAssets)
     localAssets.forEach((localAsset) => {
       var fresh = true
       remoteAssets.forEach((remoteAsset) => {
