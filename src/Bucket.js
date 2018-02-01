@@ -1,8 +1,8 @@
 const aws = require('../lib/aws')
-const crypto = require('crypto')
 const fs = require('fs-extra')
 const walk = require('walk')
 const path = require('path')
+const utils = require('./utils')
 
 class Bucket {
 
@@ -190,26 +190,13 @@ class Bucket {
     return new Promise((resolve, reject) => {
       var assets = []
       var walker = walk.walk(this.dir, { followLinks: false })
-      const _hash = (text) => crypto.createHash('md5').update(text).digest('base64')
-      const _contentType = (filename) => {
-        var lowercase = filename.toLowerCase()
-
-        if (lowercase.indexOf('.html') >= 0) return 'text/html'
-        else if (lowercase.indexOf('.css') >= 0) return 'text/css'
-        else if (lowercase.indexOf('.json') >= 0) return 'application/json'
-        else if (lowercase.indexOf('.js') >= 0) return 'application/x-javascript'
-        else if (lowercase.indexOf('.png') >= 0) return 'image/png'
-        else if (lowercase.indexOf('.jpg') >= 0) return 'image/jpg'
-
-        return 'application/octet-stream'
-      }
 
       walker.on('file', (root, stat, next) => {
         const filepath = root + '/' + stat.name
         const key = filepath.substring(this.dir.length + 1)
         const content = fs.readFileSync(filepath)
-        const contentType = _contentType(filepath)
-        const hash = _hash(content)
+        const contentType = utils.contentType(filepath)
+        const hash = utils.hash(content)
         const etag = Buffer.from(hash, 'base64').toString('hex')
         assets.push({ key, contentType, filepath, hash, etag })
         next()
