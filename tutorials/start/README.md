@@ -27,6 +27,7 @@ Otherwise, please read on to setup your AWS account.
   * [4.5 Verify that the policy was created](#45-verify-that-the-policy-was-created)
 * [STEP 5: Install the awsome dependency](#step-5-install-the-awsome-dependency)
   * [5.1: Add the AWS environment variables](#51-add-the-aws-environment-variables)
+  * [5.2 Browse the examples](#52-browse-the-examples)
 
 ## STEP 1: Get an AWS Account
 
@@ -230,8 +231,22 @@ process.env.AWS_ACCESS_KEY_ID = <inject value>
 process.env.AWS_SECRET_ACCESS_KEY = <inject value>
 ```
 
+#### 5.2 Browse the examples
+
 Good stuff! That's all there is to it. You are now ready to start using AWSome.
 
 Please have a look at the [examples](https://github.com/fluidtrends/awsome/tree/master/examples) to see what you can do with AWSome.
+
+Have a look at the list of examples available:
+
+* [```Creating a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/create-bucket.js)
+* [```Retrieving a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/retrieve-bucket.js)
+* [```Updating a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/update-bucket.js)
+* [```Deleting a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/delete-bucket.js)
+* [```Hosting a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/host-domain.js)
+* [```Unhosting domain```](https://github.com/fluidtrends/awsome/blob/master/examples/unhost-domain.js)
+* [```Linking bucket to a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/link-bucket.js)
+* [```Unliking a bucket from a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/unlink-bucket.js)
+
 
 Have fun!
