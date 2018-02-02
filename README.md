@@ -55,7 +55,7 @@ The supported examples are:
 * [```host-domain``` Hosting a domain](https://github.com/fluidtrends/awsome/blob/master/examples/host-domain.js)
 * [```unhost-domain``` Unhosting a domain](https://github.com/fluidtrends/awsome/blob/master/examples/unhost-domain.js)
 * [```link-bucket``` Linking bucket to a domain](https://github.com/fluidtrends/awsome/blob/master/examples/link-bucket.js)
-* [```unlink-bucket``` Unliking a bucket from a domain](https://github.com/fluidtrends/awsome/blob/master/examples/unlink-bucket.js)
+* [```unlink-bucket``` Unlinking a bucket from a domain](https://github.com/fluidtrends/awsome/blob/master/examples/unlink-bucket.js)
 
 [See All The Examples](/examples)
 
