@@ -42,16 +42,20 @@ bucket.retrieve()
 
 Get started with the examples provided to **create**, **retrieve**, **update** or **delete** buckets and to **host**, **unhost** domains as well as to **link** and **unlink** domains and buckets. Make sure you have your AWS key and secret ready.
 
+```
+node ./node_modules/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=create-bucket
+```
+
 The supported examples are:
 
-* [```Creating a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/create-bucket.js)
-* [```Retrieving a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/retrieve-bucket.js)
-* [```Updating a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/update-bucket.js)
-* [```Deleting a bucket```](https://github.com/fluidtrends/awsome/blob/master/examples/delete-bucket.js)
-* [```Hosting a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/host-domain.js)
-* [```Unhosting domain```](https://github.com/fluidtrends/awsome/blob/master/examples/unhost-domain.js)
-* [```Linking bucket to a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/link-bucket.js)
-* [```Unliking a bucket from a domain```](https://github.com/fluidtrends/awsome/blob/master/examples/unlink-bucket.js)
+* [```create-bucket``` Creating a bucket](https://github.com/fluidtrends/awsome/blob/master/examples/create-bucket.js)
+* [```retrieve-bucket``` Retrieving a bucket](https://github.com/fluidtrends/awsome/blob/master/examples/retrieve-bucket.js)
+* [```update-bucket``` Updating a bucket](https://github.com/fluidtrends/awsome/blob/master/examples/update-bucket.js)
+* [```delete-bucket``` Deleting a bucket](https://github.com/fluidtrends/awsome/blob/master/examples/delete-bucket.js)
+* [```host-domain``` Hosting a domain](https://github.com/fluidtrends/awsome/blob/master/examples/host-domain.js)
+* [```unhost-domain``` Unhosting a domain](https://github.com/fluidtrends/awsome/blob/master/examples/unhost-domain.js)
+* [```link-bucket``` Linking bucket to a domain](https://github.com/fluidtrends/awsome/blob/master/examples/link-bucket.js)
+* [```unlink-bucket``` Unliking a bucket from a domain](https://github.com/fluidtrends/awsome/blob/master/examples/unlink-bucket.js)
 
 [See All The Examples](/examples)
 
