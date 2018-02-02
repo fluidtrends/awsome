@@ -62,7 +62,7 @@ The supported examples are:
 
 ## Documentation
 
-Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets.
+Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets, host and unhost domains and link and unlink domains and buckets.
 
 [Read The Docs](/docs)
 
