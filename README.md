@@ -67,7 +67,7 @@ Have a look at [all the tutorials available](tutorials) to make the most of AWSs
 
 ## Documentation
 
-AWSome is very well documented and every object, option, field and function are well explained and they all include examples.
+AWSome is very well documented and all objects, options, fields and functions are well explained and they all include examples.
 
 Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets, host and unhost domains and link and unlink domains and buckets.
 
