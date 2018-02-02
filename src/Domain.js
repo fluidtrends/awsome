@@ -23,15 +23,19 @@ class Domain {
   }
 
   get id () {
-    return this._id
+    if (!this._id || !this._id.split('/') || this._id.split('/').length < 3) {
+      return null
+    }
+
+    return this._id.split('/')[2]
   }
 
   get zone () {
     return this._zone
   }
 
-  isHosted () {
-    return this.ops.isHosted()
+  isHosted (onlyTLD) {
+    return this.ops.isHosted(onlyTLD)
   }
 
   host () {
@@ -49,6 +53,34 @@ class Domain {
     return this.isHosted()
                .then((domain) => this.ops.unhost())
                .then((domain) => this)
+  }
+
+  records (options) {
+    return this.isHosted(true)
+               .then((domain) => this.ops.getRecords(options))
+  }
+
+  isBucketLinked () {
+    return this.isHosted(true)
+               .then((domain) => this.ops.isBucketLinked())
+               .then((domain) => this)
+  }
+
+  unlinkBucket () {
+    return this.isBucketLinked()
+               .then((domain) => this.ops.unlinkBucket())
+               .then((domain) => this)
+  }
+
+  linkBucket () {
+    return this.isBucketLinked()
+               .then((domain) => { throw new Error('awsome-domain-bucket-is-already-linked') })
+               .catch((error) => {
+                 if (error.message === 'awsome-domain-bucket-is-already-linked') {
+                   throw new Error('Bucket is already linked to this domain')
+                 }
+                 return this.ops.linkBucket().then(() => this)
+               })
   }
 }
 

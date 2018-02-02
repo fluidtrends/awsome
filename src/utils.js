@@ -1,9 +1,14 @@
 const crypto = require('crypto')
 const path = require('path')
 const uuid = require('uuid/v4')
+const tld = require('tldjs')
 
 function newId (domain) {
   return uuid()
+}
+
+function parseDomain (domain) {
+  return tld.parse(domain)
 }
 
 function contentType (filename) {
@@ -32,7 +37,8 @@ function hash (text) {
 var utils = {
   contentType,
   hash,
-  newId
+  newId,
+  parseDomain
 }
 
 module.exports = utils

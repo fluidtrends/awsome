@@ -4,15 +4,18 @@ const aws = require('../lib/aws')
 const utils = require('./utils')
 const path = require('path')
 
-function _isHosted (domain) {
+function _isHosted (domain, onlyTLD) {
   return aws.route53('listHostedZones', {}).then((data) => {
     if (!data.HostedZones || data.HostedZones.length === 0) {
       throw new Error('No hosted zones available')
     }
 
     var found = false
+    const domainMeta = utils.parseDomain(domain.name)
+    const domainName = onlyTLD ? domainMeta.domain : domain.name
+
     data.HostedZones.forEach((zone) => {
-      if (zone.Name === `${domain.name}.`) {
+      if (zone.Name === `${domainName}.`) {
         found = true
         domain._id = zone.Id
         domain._ref = zone.CallerReference
@@ -49,10 +52,96 @@ function _unhost (domain) {
   })
 }
 
+function _getRecords (domain, options) {
+  return aws.route53('listResourceRecordSets', { HostedZoneId: domain.id })
+              .then((data) => {
+                if (!data.ResourceRecordSets || data.ResourceRecordSets.length === 0) {
+                  return Promise.reject(new Error('This zone has no record sets'))
+                }
+                var matches = []
+                data.ResourceRecordSets.forEach((record) => {
+                  if (record.Name === `${domain.name}.` && (!options || !options.type ||
+                     (options.type === record.Type))) {
+                    matches.push(Object.assign({}, record))
+                  }
+                })
+                return Promise.resolve(matches)
+              })
+}
+
+function _isBucketLinked (domain) {
+  return _getRecords(domain, { type: 'A' }).then((records) => {
+    if (!records || records.length === 0) {
+      throw new Error('There are no records')
+    }
+    var found = false
+    records.forEach((record) => {
+      if (record.AliasTarget && record.AliasTarget.DNSName) {
+        found = true
+      }
+    })
+    if (!found) {
+      throw new Error('The bucket record was not found')
+    }
+  })
+}
+
+function _linkBucket (domain) {
+  return aws.route53('changeResourceRecordSets', {
+    ChangeBatch: {
+      Changes: [
+        {
+          Action: 'CREATE',
+          ResourceRecordSet: {
+            AliasTarget: {
+              DNSName: `s3-website-us-east-1.amazonaws.com`,
+              EvaluateTargetHealth: false,
+              HostedZoneId: 'Z3AQBSTGFYJSTF'
+            },
+            Name: domain.name,
+            Type: 'A'
+          }
+        }
+      ],
+      Comment: ''
+    },
+    HostedZoneId: domain.id
+  })
+  .then((data) => domain)
+}
+
+function _unlinkBucket (domain) {
+  return aws.route53('changeResourceRecordSets', {
+    ChangeBatch: {
+      Changes: [
+        {
+          Action: 'DELETE',
+          ResourceRecordSet: {
+            AliasTarget: {
+              DNSName: `s3-website-us-east-1.amazonaws.com`,
+              EvaluateTargetHealth: false,
+              HostedZoneId: 'Z3AQBSTGFYJSTF'
+            },
+            Name: domain.name,
+            Type: 'A'
+          }
+        }
+      ],
+      Comment: ''
+    },
+    HostedZoneId: domain.id
+  })
+  .then((data) => domain)
+}
+
 const operations = (domain) => ({
-  isHosted: () => _isHosted(domain),
+  isHosted: (onlyTLD) => _isHosted(domain, onlyTLD),
   host: () => _host(domain),
-  unhost: () => _unhost(domain)
+  unhost: () => _unhost(domain),
+  getRecords: (options) => _getRecords(domain, options),
+  isBucketLinked: () => _isBucketLinked(domain),
+  unlinkBucket: () => _unlinkBucket(domain),
+  linkBucket: () => _linkBucket(domain)
 })
 
 module.exports = operations

@@ -33,6 +33,7 @@
   "dependencies": {
     "aws-sdk": "^2.177.0",
     "fs-extra": "^5.0.0",
+    "tldjs": "^2.2.0",
     "uuid": "^3.2.1",
     "walk": "^2.3.9"
   },
