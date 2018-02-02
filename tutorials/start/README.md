@@ -4,7 +4,16 @@ Glad you're interested in checking AWSome out. To start making the most of AWSom
 
 If you do have your credentials, that's great. Feel free to just [skip ahead then](#installation).
 
-## AWS Setup
+Otherwise, please read on to setup your AWS account.
+
+* [AWS Account Setup](#aws-account-setup)
+  * [STEP 1: Get an AWS Account](#step-1-get-an-aws-account)
+  * [STEP 2: Login to your AWS Console](#step-2-login-to-your-aws-console)
+  * [STEP 3: Create a new AWS user](#step-3-create-a-new-aws-user)
+  * [STEP 4: Create a group policy](#step-4-create-a-group-policy)
+* [Installation](#installation)
+
+## AWS Account Setup
 
 Let's get your AWS account up and running. If you don't have an AWS account, not to worry, this guide will help you set one up, just continue reading.
 
