@@ -26,7 +26,7 @@ Otherwise, please read on to setup your AWS account.
   * [4.4 Apply the policy](#44-apply-the-policy)
   * [4.5 Verify that the policy was created](#45-verify-that-the-policy-was-created)
 * [STEP 5: Install the awsome dependency](#step-5-install-the-awsome-dependency)
-  * [5.1: Add the AWS environment variables](#51-add-the-AWS-environment-variables)
+  * [5.1: Add the AWS environment variables](#51-add-the-aws-environment-variables)
 
 ## STEP 1: Get an AWS Account
 
