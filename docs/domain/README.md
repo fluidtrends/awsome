@@ -32,10 +32,10 @@ bucket.host()
 
 ### Functions
 
-**```isHosted()```**
+**```isHosted(onlyTLD)```**
 *Returns a Promise*
 
-Checks whether the domain is hosted or not.
+Checks whether the domain is hosted or not. Specify ```onlyTLD=true``` to look at the TLD only, otherwise, an exact match is searched. The default is ```false```.
 
 *Example:*
 
@@ -82,6 +82,75 @@ bucket.unhost()
         // The domain could not be unhosted
       })
 ```
+
+**```records(filter)```**
+*Returns a Promise*
+
+Fetch a list of records for the hosted zone and specify a filter to narrow results.
+
+*Example:*
+
+```
+bucket.records({ type: 'A' })
+      .then((records) => {
+        // Gets all A records
+      })
+      .catch((error) => {
+        // The records could not be retrieved
+      })
+```
+
+**```isBucketLinked()```**
+*Returns a Promise*
+
+Check whether this domain has an S3 bucket linked for hosting.
+
+*Example:*
+
+```
+bucket.isBucketLinked()
+      .then((domain) => {
+        // This domain has a bucket linked to it
+      })
+      .catch((error) => {
+        // The domain does not have a linked bucket
+      })
+```
+
+**```linkBucket()```**
+*Returns a Promise*
+
+Link an S3 Bucket to this domain.
+
+*Example:*
+
+```
+bucket.linkBucket()
+      .then((domain) => {
+        // This domain has a bucket linked to it now
+      })
+      .catch((error) => {
+        // The domain and the bucket could not b linked
+      })
+```
+
+**```unlinkBucket()```**
+*Returns a Promise*
+
+Remove the link between an S3 Bucket and this domain.
+
+*Example:*
+
+```
+bucket.unlinkBucket()
+      .then((domain) => {
+        // This domain does not have a bucket linked to it anymore
+      })
+      .catch((error) => {
+        // The domain and the bucket link could not be removed
+      })
+```
+
 
 ### Fields
 

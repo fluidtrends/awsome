@@ -41,18 +41,22 @@ bucket.retrieve()
 
 ## Examples
 
-Get started with the examples provided to **create**, **retrieve**, **update** or **delete** buckets. Make sure you have your AWS key and secret ready and then just run the example as follows:
+Get started with the examples provided to **create**, **retrieve**, **update** or **delete** buckets and to **host**, **unhost** domains as well as to **link** and **unlink** domains and buckets. Make sure you have your AWS key and secret ready and then just run the example as follows:
 
 ```
-node ./node_modules/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=create
+node ./node_modules/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=create-bucket
 ```
 
 The supported examples are:
 
-* ```create```
-* ```retrieve```
-* ```update```
-* ```delete```
+* ```create-bucket```
+* ```retrieve-bucket```
+* ```update-bucket```
+* ```delete-bucket```
+* ```host-domain```
+* ```unhost-domain```
+* ```link-bucket```
+* ```unlink-bucket```
 
 [See All The Examples](/examples)
 

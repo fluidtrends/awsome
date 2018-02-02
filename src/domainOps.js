@@ -52,7 +52,7 @@ function _unhost (domain) {
   })
 }
 
-function _getRecords (domain, options) {
+function _getRecords (domain, filter) {
   return aws.route53('listResourceRecordSets', { HostedZoneId: domain.id })
               .then((data) => {
                 if (!data.ResourceRecordSets || data.ResourceRecordSets.length === 0) {
@@ -60,8 +60,8 @@ function _getRecords (domain, options) {
                 }
                 var matches = []
                 data.ResourceRecordSets.forEach((record) => {
-                  if (record.Name === `${domain.name}.` && (!options || !options.type ||
-                     (options.type === record.Type))) {
+                  if (record.Name === `${domain.name}.` && (!filter || !filter.type ||
+                     (filter.type === record.Type))) {
                     matches.push(Object.assign({}, record))
                   }
                 })
@@ -138,7 +138,7 @@ const operations = (domain) => ({
   isHosted: (onlyTLD) => _isHosted(domain, onlyTLD),
   host: () => _host(domain),
   unhost: () => _unhost(domain),
-  getRecords: (options) => _getRecords(domain, options),
+  getRecords: (filter) => _getRecords(domain, filter),
   isBucketLinked: () => _isBucketLinked(domain),
   unlinkBucket: () => _unlinkBucket(domain),
   linkBucket: () => _linkBucket(domain)

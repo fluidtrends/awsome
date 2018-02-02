@@ -55,9 +55,9 @@ class Domain {
                .then((domain) => this)
   }
 
-  records (options) {
+  records (filter) {
     return this.isHosted(true)
-               .then((domain) => this.ops.getRecords(options))
+               .then((domain) => this.ops.getRecords(filter))
   }
 
   isBucketLinked () {
