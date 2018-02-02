@@ -1,6 +1,6 @@
 {
   "name": "awsome",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "AWS Object Management Environment",
   "scripts": {
     "test": "savor test",
