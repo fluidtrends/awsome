@@ -2,39 +2,37 @@
 
 Glad you're interested in checking AWSome out. To start making the most of AWSome you will need to have your AWS credentials ready so if you don't have those setup, let's do that before moving on.
 
-If you do have your credentials, that's great. Feel free to just [skip ahead then](#installation).
+If you do have your credentials, that's great. Feel free to just [skip ahead then](#step-5-install-the-awsome-dependency)
 
 Otherwise, please read on to setup your AWS account.
 
-* [AWS Account Setup](#aws-account-setup)
-  * [STEP 1: Get an AWS Account](#step-1-get-an-aws-account)
-  * [STEP 2: Login to your AWS Console](#step-2-login-to-your-aws-console)
-  * [STEP 3: Create a new AWS user](#step-3-create-a-new-aws-user)
-    * [3.1 Choose a username](#3-1-choose-a-username)
-    * [3.2 Select access type](#3-2-select-access-type)
-    * [3.3 Move on to permissions](#3-3-move-on-to-permissions)
-    * [3.4 Create a group](#3-4-create-a-group)
-    * [3.5 Choose a group name](#3-5-choose-a-group-name)
-    * [3.6 Confirm group creation](#3-6-confirm-group-creation)
-    * [3.7 Verify that the group was created](#3-7-verify-that-the-group-was-created)
-    * [3.8 Review the new user](#3-8-review-the-new-user)
-    * [3.9 Confirm user creation](#3-9-confirm-user-creation)
-    * [3.10 Store your user credentials somewhere safe](#3-10-store-your-user-credentials-somewhere-safe)
-  * [STEP 4: Create a group policy](#step-4-create-a-group-policy)
-    * [4.1 Go to the group](#4-1-go-to-the-group)
-    * [4.2 Create a custom policy](#4-2-create-a-custom-policy)
-    * [4.3 Give it a name and add the content](#4-3-give-it-a-name-and-add-the-content)
-    * [4.4 Apply the policy](#4-4-apply-the-policy)
-    * [4.5 Verify that the policy was created](#4-5-verify-that-the-policy-was-created)
-* [Installation](#installation)
-  * [STEP 1: Install the awsome dependency](#step-1-install-the-awsome-dependency)
-  * [STEP 2: Add the AWS environment variables](#step-2-add-the-AWS-environment-variables)
+* [STEP 1: Get an AWS Account](#step-1-get-an-aws-account)
+* [STEP 2: Login to your AWS Console](#step-2-login-to-your-aws-console)
+* [STEP 3: Create a new AWS user](#step-3-create-a-new-aws-user)
+  * [3.1 Choose a username](#3-1-choose-a-username)
+  * [3.2 Select access type](#3-2-select-access-type)
+  * [3.3 Move on to permissions](#3-3-move-on-to-permissions)
+  * [3.4 Create a group](#3-4-create-a-group)
+  * [3.5 Choose a group name](#3-5-choose-a-group-name)
+  * [3.6 Confirm group creation](#3-6-confirm-group-creation)
+  * [3.7 Verify that the group was created](#3-7-verify-that-the-group-was-created)
+  * [3.8 Review the new user](#3-8-review-the-new-user)
+  * [3.9 Confirm user creation](#3-9-confirm-user-creation)
+  * [3.10 Store your user credentials somewhere safe](#3-10-store-your-user-credentials-somewhere-safe)
+* [STEP 4: Create a group policy](#step-4-create-a-group-policy)
+  * [4.1 Go to the group](#4-1-go-to-the-group)
+  * [4.2 Create a custom policy](#4-2-create-a-custom-policy)
+  * [4.3 Give it a name and add the content](#4-3-give-it-a-name-and-add-the-content)
+  * [4.4 Apply the policy](#4-4-apply-the-policy)
+  * [4.5 Verify that the policy was created](#4-5-verify-that-the-policy-was-created)
+* [STEP 5: Install the awsome dependency](#step-5-install-the-awsome-dependency)
+  * [5.1: Add the AWS environment variables](#5-1-add-the-AWS-environment-variables)
 
 ## AWS Account Setup
 
 Let's get your AWS account up and running. If you don't have an AWS account, not to worry, this guide will help you set one up, just continue reading.
 
-If you do have an account, that's great. Feel free to just [skip ahead then](#installation).
+If you do have an account, that's great. Just [skip ahead then](#step-5-install-the-awsome-dependency)
 
 #### STEP 1: Get an AWS Account
 
