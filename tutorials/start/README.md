@@ -55,25 +55,28 @@ Let's get your AWS account up and running. If you don't have an AWS account, not
 
 [![](images/step-3-6.png)]()
 
-**Almost there.** Good job, you just created a brand new user with its own group. We will use this user to access your AWS account programmatically.
+**7. Almost there.** Good job, you just created a brand new user with its own group. We will use this user to access your AWS account programmatically.
 
 [![](images/step-3-7.png)]()
 
-**Next**, click the **Next: Review** button to review our new user.
+**8. Next**, click the **Next: Review** button to review our new user.
 
 [![](images/step-3-8.png)]()
 
-**Looks good!** Let's just go ahead and confirm that we want to finish the process now. Just click the **Create user** button to finish.
+**9. Looks good!** Let's just go ahead and confirm that we want to finish the process now. Just click the **Create user** button to finish.
 
 [![](images/step-3-9.png)]()
 
+---
 **Amazing!** You've got yourself a brand new user. Congrats! You will notice the *Access key ID* and the *Secret access key* that come with your user. Those are very important and we need those to access your account. The *Secret access key* is especially sensitive that's why AWS hides that.
 
-Click the *Show* link next to the *Secret access key* and do the same for the *Password* and **STORE THESE SOMEWHERE SAFE.**
+**10. Next**, click the *Show* link next to the *Secret access key* and do the same for the *Password* and copy the values and **STORE THEM SOMEWHERE SAFE.**
 
 *Use a Password Manager like [1Password](https://1password.com/) or do whatever you do with all your sensitive information like passwords or credit card numbers. But whatever you do, make sure these are safe and treat them as you would any sensitive information - with utmost care for their security.*
 
 [![](images/step-3-10.png)]()
+
+----
 
 But first, we have a bit more work to do. Don't worry, this will be quick.
 
@@ -138,3 +141,23 @@ This is great. Your AWS account is now ready to go.
 [![](images/step-4-done.png)]()
 
 ## Installation
+
+Great, you should have your AWS user credentials now (key and secret) so you can just install AWSome and start using it.
+
+To install, just add ```awsome``` to your NPM module like so:
+
+```
+npm i -S awsome
+```
+
+Then you can import ```awsome``` in your code as follows:
+
+```
+const awsome = require('awsome')
+```
+
+That's all there is to it. You're not ready to start using AWSome.
+
+Please have a look at the [examples](https://github.com/fluidtrends/awsome/tree/master/examples) to see what you can do with AWSome.
+
+Have fun!
