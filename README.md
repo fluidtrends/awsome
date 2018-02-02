@@ -21,7 +21,7 @@
 
 Make your AWS credentials available in the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables and then just import AWSome to get started.
 
-```
+```javascript
 // Import AWSome
 const awsome = require('awsome')
 
@@ -42,7 +42,7 @@ bucket.retrieve()
 
 Get started with the examples provided to **create**, **retrieve**, **update** or **delete** buckets and to **host**, **unhost** domains as well as to **link** and **unlink** domains and buckets. Make sure you have your AWS key and secret ready.
 
-```
+```bash
 node ./node_modules/awsome/examples key=<INSERT AWS KEY> secret=<INSERT AWS SECRET> example=create-bucket
 ```
 
