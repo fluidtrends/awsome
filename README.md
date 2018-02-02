@@ -59,7 +59,15 @@ The supported examples are:
 
 [See All The Examples](/examples)
 
+## Tutorials
+
+There is a detailed [Getting Started](tutorials/start) tutorial that you can read to set your AWS account up, to install and to start using AWSome right away.
+
+Have a look at [all the tutorials available](tutorials) to make the most of AWSsome.
+
 ## Documentation
+
+AWSome is very well documented and every object, option, field and function are well explained and they all include examples.
 
 Read the full documentation for detailed instructions on how to create, retrieve, update and delete buckets, including site buckets, host and unhost domains and link and unlink domains and buckets.
 
