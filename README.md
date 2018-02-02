@@ -80,6 +80,8 @@ AWSome makes use of the following libraries:
 * [cross-env](https://github.com/kentcdodds/cross-env) - for running examples
 * [fs-extra](https://github.com/jprichardson/node-fs-extra) - for file management
 * [walk](https://github.com/Daplie/node-walk) - for file tree walking
+* [uuid](https://github.com/kelektiv/node-uuid) - for generating hosted zone references
+* [tldjs](https://github.com/oncletom/tld.js) - for parsing domain names
 * [savor](https://github.com/fluidtrends/savor) - for testing
 
 ## License
