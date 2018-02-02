@@ -27,13 +27,16 @@ Otherwise, please read on to setup your AWS account.
     * [4.4 Apply the policy](#4-4-apply-the-policy)
     * [4.5 Verify that the policy was created](#4-5-verify-that-the-policy-was-created)
 * [Installation](#installation)
+  * [STEP 1: Install the awsome dependency](#step-1-install-the-awsome-dependency)
+  * [STEP 2: Add the AWS environment variables](#step-2-add-the-AWS-environment-variables)
 
 ## AWS Account Setup
 
 Let's get your AWS account up and running. If you don't have an AWS account, not to worry, this guide will help you set one up, just continue reading.
 
+If you do have an account, that's great. Feel free to just [skip ahead then](#installation).
+
 #### STEP 1: Get an AWS Account
-(*you may skip this step if you already have an AWS account*)
 
 So you don't have an AWS Account yet. Not to worry, it takes 5 minutes or less to get one.
 
@@ -148,7 +151,7 @@ Next, select the *Custom Policy* section and press the *Select* button.
 Just give your policy a name - **awsome** will work - and enter the following text for the policy:
 
 <details>
-<summary> Expand to see the copy policy text </summary>
+<summary> Expand to see the policy text </summary>
 ```
 {
   {
@@ -201,6 +204,8 @@ This is great. Your AWS account is now ready to go.
 
 Great, you should have your AWS user credentials now (key and secret) so you can just install AWSome and start using it.
 
+#### STEP 1: Install the ```awsome``` dependency
+
 To install, just add ```awsome``` to your NPM module like so:
 
 ```
@@ -211,9 +216,27 @@ Then you can import ```awsome``` in your code as follows:
 
 ```
 const awsome = require('awsome')
+
 ```
 
-That's all there is to it. You're not ready to start using AWSome.
+#### STEP 2: Add the AWS environment variables
+
+AWSome expects your AWS user credentials to be available as environment variables, as documented in the [official AWS SDK Node.js documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-environment.html).
+
+The two environment variables we want are ```AWS_ACCESS_KEY_ID``` and ```AWS_SECRET_ACCESS_KEY```. These are the values you created in [Step 3.10](#3-10-store-your-user-credentials-somewhere-safe) and that you stored somewhere safe.
+
+It does not matter how the variables end up in the environment, as long as the Node.js process can find them in the ```process.env``` object. You can set them at the command prompt or you can load them from a secure location at runtime and inject them in the ```process.env```.
+
+***Whatever you do, make sure your credentials are safe and secure and are not exposed in your code***
+
+If you do want to inject them at run time, here's how you can do that:
+
+```
+process.env.AWS_ACCESS_KEY_ID = <inject value>
+process.env.AWS_SECRET_ACCESS_KEY = <inject value>
+```
+
+Good stuff! That's all there is to it. You are now ready to start using AWSome.
 
 Please have a look at the [examples](https://github.com/fluidtrends/awsome/tree/master/examples) to see what you can do with AWSome.
 
