@@ -37,21 +37,18 @@ class Bucket {
 
   get publicPolicy () {
     return {
-      Version: '2008-10-17',
+      Version: '2012-10-17',
       Statement: [
         {
-          Sid: 'Allow Public Access to All Objects',
+          Sid: "PublicReadGetObject",
           Effect: 'Allow',
-          Principal: {
-            'AWS': '*'
-          },
+          Principal: "*",
           Action: 's3:GetObject',
           Resource: `arn:aws:s3:::${this.name}/*`
         }
       ]
     }
   }
-
   exists () {
     return this.ops.exists()
   }
