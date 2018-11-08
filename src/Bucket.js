@@ -65,12 +65,13 @@ class Bucket {
                 if (error.message === 'awsome-bucket-exists') {
                   throw new Error('Bucket already exists')
                 }
-                return this.ops.create().then(() => {
+                return this.ops.create().then(() => this.ops.createPolicy())
+                .then(() => {
                   if (!this.site) {
                     return this
                   }
                   return this.ops.createSite()
-                }).then(() => this.ops.createPolicy())
+                })
               })
   }
 
