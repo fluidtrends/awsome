@@ -16,6 +16,7 @@ function contentType (filename) {
     html: 'text/html',
     css: 'text/css',
     json: 'application/json',
+    svg: 'image/svg+xml',
     js: 'application/x-javascript',
     png: 'image/png',
     jpg: 'image/jpg',
