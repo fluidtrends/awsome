@@ -38,6 +38,17 @@ class Domain {
     return this.ops.isHosted(onlyTLD)
   }
 
+  check() {
+    return new Promise((resolve, reject) => {
+      this.ops.status().then((data) => {
+        resolve(data)
+      })
+      .catch((error) => {
+        resolve({ error })
+      })
+    })
+  }
+
   host () {
     return this.isHosted()
                .then((domain) => { throw new Error('awsome-domain-ishosted') })

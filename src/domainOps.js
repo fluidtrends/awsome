@@ -69,6 +69,32 @@ function _getRecords (domain, filter) {
               })
 }
 
+function _status(domain) {
+  var result = {}
+  return Promise.all([new Promise((resolve, reject) => {
+    aws.route53Domains('checkDomainAvailability', { DomainName: domain.name })
+       .then((data) => {
+         resolve({ id: 'availability', available: data.Availability === 'AVAILABLE' || false })
+       })
+       .catch((error) => {
+         resolve({ id: 'availability', errorCode: error.code, errorMessage: error.message })
+       })
+  }),
+  new Promise((resolve, reject) => {
+    aws.route53Domains('getDomainDetail', { DomainName: domain.name })
+       .then((data) => {
+         resolve({ id: 'listing', data })
+       })
+       .catch((error) => {
+         resolve({ id: 'listing', errorCode: error.code, errorMessage: error.message })
+       })
+  })])
+  .then((items) => {
+    items.map((item) => result[item.id] = item)
+    return result
+  })
+}
+
 function _isBucketLinked (domain) {
   return _getRecords(domain, { type: 'A' }).then((records) => {
     if (!records || records.length === 0) {
@@ -84,6 +110,14 @@ function _isBucketLinked (domain) {
       throw new Error('The bucket record was not found')
     }
   })
+}
+
+function _register(domain, contact) {
+
+}
+
+function _listAll(domain, contact) {
+
 }
 
 function _linkBucket (domain) {
@@ -136,11 +170,13 @@ function _unlinkBucket (domain) {
 
 const operations = (domain) => ({
   isHosted: (onlyTLD) => _isHosted(domain, onlyTLD),
+  status: () => _status(domain),
   host: () => _host(domain),
   unhost: () => _unhost(domain),
   getRecords: (filter) => _getRecords(domain, filter),
   isBucketLinked: () => _isBucketLinked(domain),
   unlinkBucket: () => _unlinkBucket(domain),
+  register: () => _register(domain),
   linkBucket: () => _linkBucket(domain)
 })
 
