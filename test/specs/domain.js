@@ -3,11 +3,11 @@ const Domain = savor.src('Domain')
 const aws = savor.src('../lib/aws')
 
 function _stubWithSuccess (context, service, calls, data) {
-  calls.map(call => context.stub(service, call, (options, callback) => callback(null, data)))
+  calls.map(call => context.stub(service, call).callsFake((options, callback) => callback(null, data)))
 }
 
 function _stubWithError (context, service, calls, error) {
-  calls.map(call => context.stub(service, call, (options, callback) => callback(error)))
+  calls.map(call => context.stub(service, call).callsFake((options, callback) => callback(error)))
 }
 
 function _unstub (service, calls) {

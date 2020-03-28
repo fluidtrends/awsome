@@ -1,35 +1,65 @@
 version: 2
+
+defaults: &defaults 
+  working_directory: ~/root
+  docker:
+    - image: circleci/node:8.10
+
 jobs:
+
   build:
-    working_directory: ~/test
-    docker:
-      - image: circleci/node:6.10
+    <<: *defaults
+    steps:
+      - run:
+          name: Install Code Climate test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
+
+  main-tests:
+    <<: *defaults
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/root/tmp
       - run:
-          name: install Node dependencies
+          name: Install main dependencies
           command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run core tests
+          command: | 
+            npm run coverage 
+            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.core.json
+      - persist_to_workspace:
+          root: tmp
           paths:
-            - ./node_modules
+            - codeclimate.core.json
+
+  submit-coverage:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/root/tmp
       - run:
-          name: Run the tests
-          command: npm test
-      - run:
-          name: Setup Code Climate test-reporter
+          name: Upload combined coverage to Code Climate
           command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-      - run:
-          name: Prepare the Code Climate reporting process
-          command: ./cc-test-reporter before-build
-      - run:
-          name: Generate code coverage
-          command: npm run coverage
-      - run:
-          name: Send the test report to Code Climate
-          command: ./cc-test-reporter after-build --exit-code $?
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 1 -o tmp/codeclimate.total.json
+            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
+
+workflows:
+  version: 2
+
+  all:
+    jobs:
+      - build
+      - main-tests:
+          requires:
+            - build
+      - submit-coverage:
+          requires:
+            - main-tests
