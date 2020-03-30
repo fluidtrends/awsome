@@ -31,7 +31,17 @@ function _isHosted (domain, onlyTLD) {
   })
 }
 
-function _host (domain) {
+function _updateNameServers(domain) {
+  const Nameservers = domain._ns.map(Name => ({ Name }))
+
+  return aws.route53Domains('updateDomainNameservers', {
+    DomainName: domain.name,
+    Nameservers
+  })
+  .then(() => domain)
+}
+
+function _host (domain, stats) {
   domain._ref = utils.newId()
 
   return aws.route53('createHostedZone', {
@@ -39,7 +49,8 @@ function _host (domain) {
     Name: domain.name
   }).then((data) => {
     domain._zone = Object.assign({}, data.HostedZone)
-    return domain
+    domain._ns = data.DelegationSet.NameServers
+    return _updateNameServers(domain)
   })
 }
 
@@ -74,7 +85,7 @@ function _status(domain) {
   return Promise.all([new Promise((resolve, reject) => {
     aws.route53Domains('checkDomainAvailability', { DomainName: domain.name })
        .then((data) => {
-         resolve({ id: 'availability', available: data.Availability === 'AVAILABLE' || false })
+        resolve({ id: 'availability', available: data.Availability === 'AVAILABLE' || false })
        })
        .catch((error) => {
          resolve({ id: 'availability', errorCode: error.code, errorMessage: error.message })
@@ -86,7 +97,7 @@ function _status(domain) {
          resolve({ id: 'listing', data })
        })
        .catch((error) => {
-         resolve({ id: 'listing', errorCode: error.code, errorMessage: error.message })
+        resolve({ id: 'listing', errorCode: error.code, errorMessage: error.message })
        })
   })])
   .then((items) => {

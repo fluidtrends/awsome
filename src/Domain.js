@@ -56,7 +56,7 @@ class Domain {
                  if (error.message === 'awsome-domain-ishosted') {
                    throw new Error('Domain is already hosted')
                  }
-                 return this.ops.host().then(() => this)
+                 return this.check().then((stats) => this.ops.host(stats).then(() => this))
                })
   }
 
