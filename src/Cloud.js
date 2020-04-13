@@ -20,8 +20,17 @@ class _ {
     }
 
     init() {
-        return this.ops.init()
+      return this.ops.init()
     }
+
+    status() {
+      return this.ops.status()
+    }
+
+    push() {
+      return this.ops.push()
+    }
+
 }
 
 module.exports = _
